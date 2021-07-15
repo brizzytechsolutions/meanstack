@@ -37,7 +37,7 @@ export class CategoryService {
   create(inventory: Inventory): Observable<Inventory> {
     const url = `${this.baseUrl}/create}`
     // return this.http.post<Inventory>(this.baseUrl + '/create/', inventory, this.headerOptions)
-    return this.http.post<Inventory>(this.baseUrl, inventory, this.headerOptions)
+    return this.http.post<Inventory>(url, inventory, this.headerOptions)
     .pipe(
       catchError(this.errorHandler)
     );
@@ -59,7 +59,7 @@ export class CategoryService {
   }
 
   search(CategoryName: string): Observable<Inventory[]>{
-    const url = `${this.baseUrl}?CategoryName=${CategoryName}`;
+    const url = `${this.baseUrl}/?CategoryName=${CategoryName}`;
     return this.http.get<Inventory[]>(url, this.headerOptions)
     .pipe(
       catchError(this.errorHandler)
