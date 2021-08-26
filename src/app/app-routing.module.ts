@@ -7,12 +7,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { ListComponent } from './list/list.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: 'list', pathMatch: 'full'},
+  {path: '',  pathMatch: 'full', redirectTo: 'list'},
   {path: 'list', component: ListComponent},
   {path: 'add', component: AddComponent},
-  {path: '/:id', component: EditComponent},
-  {path: '/:id', component: DetailComponent},
-  {path: '/:id', component: DeleteComponent}
+  {path: 'edit/:id', component: EditComponent},
+  {path: 'detail/:id', component: DetailComponent},
+  {path: 'delete/:id', component: DeleteComponent}
 ];
 
 @NgModule({

@@ -13,6 +13,7 @@ export class CategoryService {
   headerOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
+      // ,'Access-Control-Allow-Origin': ''
     })
   }
 
@@ -21,7 +22,7 @@ export class CategoryService {
   constructor(private http: HttpClient) { }
 
   getAll(): Observable<Inventory[]>{
-    return this.http.get<Inventory[]>(this.baseUrl, this.headerOptions).pipe(
+    return this.http.get<Inventory[]>(this.baseUrl).pipe(
       catchError(this.errorHandler)
     );
   }

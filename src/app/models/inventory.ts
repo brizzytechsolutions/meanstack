@@ -3,6 +3,6 @@ export interface Inventory {
     CategoryName: string;
     Description: string;
     Quantity: number;
-    Instock: boolean;
+    InStock: boolean;
     DateReceived: Date;
 }
