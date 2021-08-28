@@ -36,9 +36,9 @@ export class CategoryService {
   }
 
   create(inventory: Inventory): Observable<Inventory> {
-    const url = `${this.baseUrl}/create}`
-    // return this.http.post<Inventory>(this.baseUrl + '/create/', inventory, this.headerOptions)
-    return this.http.post<Inventory>(url, inventory, this.headerOptions)
+    // const url = `${this.baseUrl}/${create}`
+    return this.http.post<Inventory>(this.baseUrl + '/create/', inventory, this.headerOptions)
+    // return this.http.post<Inventory>(url, inventory, this.headerOptions)
     .pipe(
       catchError(this.errorHandler)
     );

@@ -23,6 +23,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatCardModule} from '@angular/material/card';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatMenuModule} from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatToolbarModule,
     MatCardModule,
     MatTooltipModule,
-    MatDialogModule
+    MatDialogModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]

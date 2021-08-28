@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CategoryService } from '../services/category.service';
 
@@ -24,20 +24,21 @@ export class AddComponent implements OnInit {
 
   myForm() {
     this.inventoryForm = this.fb.group({
-      CategoryName: [''],
-      Description: [''],
-      Quantity: [''],
-      InStock: [''],
-      DateReceived: ['']
+      CategoryName: ['', Validators.required],
+      Description: ['', Validators.required],
+      Quantity: ['', Validators.required],
+      InStock: ['', Validators.required]
+      // ,DateReceived: ['']
     })
   }
 
   onSubmit() {
-    this.submitted = true;
+    console.log(this.inventoryForm.value);
     try {
-      this.cService.create(this.inventoryForm.value).subscribe((res) => {
-        console.log('Successfully submitted the form!');
-        this.router.navigateByUrl('/list');
+        this.cService.create(this.inventoryForm.value).subscribe((res) => {
+           console.log('Successfully submitted the form!', res);
+          this.router.navigateByUrl('/list');
+          this.submitted = true;
       })
     } catch (error) {
       console.log('Falied to submit', error);

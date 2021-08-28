@@ -4,6 +4,10 @@ table {
 }
 
 .mat-form-field {
-  font-size: 14px;
   width: 100%;
+  padding-bottom: 2rem;
+}
+
+mat-card {
+  margin-top: 2rem;
 }
