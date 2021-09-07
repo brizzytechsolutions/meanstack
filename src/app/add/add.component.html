@@ -7,28 +7,28 @@
       <form [formGroup]="inventoryForm" (ngSubmit)="onSubmit()">
 
         <div fxLayout="column">
-          <mat-form-field appearance="fill">
+          <mat-form-field >
             <mat-label>Name</mat-label>
             <input formControlName="CategoryName" matInput type="text">
           </mat-form-field>
         </div>
 
         <div fxLayout="column">
-          <mat-form-field appearance="fill">
+          <mat-form-field >
             <mat-label>Description</mat-label>
             <input formControlName="Description" matInput type="text">
           </mat-form-field>
         </div>
 
         <div fxLayout="column">
-          <mat-form-field appearance="fill">
+          <mat-form-field>
             <mat-label>Quantinty</mat-label>
             <input formControlName="Quantity" matInput type="number">
           </mat-form-field>
         </div>
 
         <div fxLayout="column">
-          <mat-form-field appearance="fill">
+          <mat-form-field>
             <mat-label>Instock</mat-label>
             <select formControlName="InStock" matNativeControl>
               <option value="" selected>Select option</option>
@@ -40,7 +40,7 @@
 
         <div fxLayout="row" fxLayoutGap="20px">
           <button [disabled]="!inventoryForm.valid" class="waves-effect waves-light" mat-raised-button color="accent" type="submit">CREATE</button>
-          <button class="waves-effect waves-light grey " mat-raised-button type="submit">BACK</button>
+          <button [routerLink]="['/list']" class="waves-effect waves-light grey " mat-raised-button type="submit">BACK</button>
         </div>
 
       </form>

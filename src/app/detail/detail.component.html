@@ -1,42 +1,27 @@
-<div class="row">
-    <h4 class="title">Details</h4>
-  <form [formGroup]="detailsForm" (ngSubmit)="onBack()" class="col s6">
-    <div class="row">
-      <div class="input-field col s6">
-        <input placeholder="Category Name" id="CategoryName" type="text" class="validate">
-        <label for="CategoryName">Category Name: </label>
-      </div>
-      <div class="input-field col s6">
-        <input id="Description" type="text" class="validate" placeholder="Description">
-        <label for="Description">Description: </label>
-      </div>
-    </div>
-    <div class="row">
-      <div class="input-field col s6">
-        <input placeholder="Quantity" id="Quantity" type="number" class="validate">
-        <label for="Quantity">Quantity: </label>
-      </div>
-      <div class="input-field col s6">
-        <select class="browser-default">
-          <option>In Stock select you option</option>
-          <option value="true">Yes</option>
-          <option value="false">False</option>
-        </select>
-      </div>
-    </div>
-    <div class="row">
-      <div class="input-field col s12">
-        <input id="DateReceived" type="date" class="validate">
-        <label for="DateReceived">Date Received</label>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col s6">
-        <button class="waves-effect waves-light btn" type="submit">Create</button>
-      </div>
-      <div class="col s6">
-        <a class="waves-effect waves-light grey btn">Back to list</a>
-      </div>
-    </div>
-  </form>
-</div>
+<mat-card>
+  <div fxLayout="column" fxLayoutAlign="start stretch">
+    <mat-toolbar color="warn">
+      <span class="fill-remaining-space">Inventory Details</span>
+    </mat-toolbar>
+    <mat-list>
+      <mat-list-item>Category Name: {{ inventory.CategoryName }}</mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item>Description: {{ inventory.Description }}</mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item>Quantity: {{ inventory.Quantity }}</mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item>In Stock: {{ inventory.InStock }}</mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item>Date Received: {{ inventory.DateReceived | date:'short'}}</mat-list-item>
+    </mat-list>
+    <hr>
+    <button
+      [routerLink]="['/list']"
+      class="waves-effect waves-light grey"
+      mat-raised-button
+      color="accent"
+      type="submit">
+      BACK
+    </button>
+  </div>
+</mat-card>

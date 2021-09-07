@@ -1,0 +1,11 @@
+mat-card{
+  width: 55%;
+  display: block;
+  margin-left:auto;
+  margin-right:auto;
+  vertical-align:middle;
+ }
+
+form {
+  padding-top: 1rem;
+}

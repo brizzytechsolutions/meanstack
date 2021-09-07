@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { CategoryService } from '../services/category.service';
 
@@ -15,7 +16,8 @@ export class AddComponent implements OnInit {
   constructor(
     private cService: CategoryService,
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
+    private snack: MatSnackBar
   ) {}
 
   ngOnInit(): void {

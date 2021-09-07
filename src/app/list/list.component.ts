@@ -3,6 +3,12 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Inventory } from '../models/inventory';
 import { CategoryService } from '../services/category.service';
+import {MatDialog} from '@angular/material/dialog';
+
+
+// Import edit component and use it as a dialog
+import { EditComponent } from '../edit/edit.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-list',
@@ -14,19 +20,29 @@ export class ListComponent implements OnInit {
   dataSource = new MatTableDataSource<Inventory>(this.ELEMENT_DATA);
   displayedColumns: string[] = ['id', 'CategoryName', 'Description', 'Quantity', 'InStock', 'DateReceived', 'Action'];
 
-  constructor(
-    private cService: CategoryService
-  ) { }
+  constructor(public dialog: MatDialog, private cService: CategoryService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.getAllStock();
   }
 
-  // @ViewChild(MatPaginator) paginator!: MatPaginator;
+  openDialog() {
+    console.log()
+    const dialogRef = this.dialog.open(EditComponent, {
+      width: '700px',
+      data: {
 
-  // ngAfterViewInit() {
-  //   this.dataSource.paginator = this.paginator;
-  // }
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+
+  navigateTo(data:any) {
+    this.openDialog();
+  }
 
   getAllStock(){
       try {

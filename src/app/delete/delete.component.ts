@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Inventory } from '../models/inventory';
 import { CategoryService } from '../services/category.service';
 
 @Component({
@@ -9,35 +11,38 @@ import { CategoryService } from '../services/category.service';
   styleUrls: ['./delete.component.css']
 })
 export class DeleteComponent implements OnInit {
-  deleteData!: FormGroup;
+  inventory!: Inventory;
+  id!: number
 
   constructor(
     private cService: CategoryService,
     private route: ActivatedRoute,
     private router: Router,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private snack: MatSnackBar
   ) { }
 
   ngOnInit(): void {
-    this.cService.getById(this.route.snapshot.params.id).subscribe((res) => {
-      this.deleteData = this.fb.group({
-        CategoryName: res['CategoryName'],
-        Description: res['Description'],
-        Quantity: res['Quantity'],
-        InStock: res['InStock'],
-        DateReceived: res['DateReceived']
-      })
+    this.cService.getById(this.route.snapshot.params.id).subscribe((res: Inventory) => {
+      this.inventory = res;
     })
   }
 
-  onSubmit(id: any) {
+  onSubmit() {
     try {
-      this.cService.delete(id).subscribe((res) => {
+      this.cService.delete(this.route.snapshot.params.id).subscribe((res) => {
+        console.warn('Deleted', res);
         this.router.navigate(['/list']);
       })
     } catch (error) {
       console.log('Failed to delete', error);
     }
+  }
+
+  openSnackBar() {
+    this.snack.open('You\'ve successfully deleted the data item', 'Deleted', {
+      duration: 3000
+    });
   }
 
 }

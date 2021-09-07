@@ -1,42 +1,61 @@
-<div class="row">
-    <h4 class="title">Update Inventory</h4>
-  <form [formGroup]="editForm" (ngSubmit)="onSubmit()"  class="col s6">
-    <div class="row">
-      <div class="input-field col s6">
-        <input placeholder="Category Name" id="CategoryName" type="text" class="validate">
-        <label for="CategoryName">Category Name: </label>
+<mat-card>
+  <div fxLayout="column" fxLayoutAlign="start stretch">
+    <mat-toolbar color="warn">
+      <span class="fill-remaining-space">Update Inventory Form</span>
+    </mat-toolbar>
+    <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+      <div fxLayout="column">
+        <mat-form-field appearance="fill">
+          <mat-label>Name</mat-label>
+          <input formControlName="CategoryName" matInput type="text" />
+        </mat-form-field>
       </div>
-      <div class="input-field col s6">
-        <input id="Description" type="text" class="validate" placeholder="Description">
-        <label for="Description">Description: </label>
+
+      <div fxLayout="column">
+        <mat-form-field appearance="fill">
+          <mat-label>Description</mat-label>
+          <input formControlName="Description" matInput type="text" />
+        </mat-form-field>
       </div>
-    </div>
-    <div class="row">
-      <div class="input-field col s6">
-        <input placeholder="Quantity" id="Quantity" type="number" class="validate">
-        <label for="Quantity">Quantity: </label>
+
+      <div fxLayout="column">
+        <mat-form-field appearance="fill">
+          <mat-label>Quantinty</mat-label>
+          <input formControlName="Quantity" matInput type="number" />
+        </mat-form-field>
       </div>
-      <div class="input-field col s6">
-        <select class="browser-default">
-          <option>In Stock select you option</option>
-          <option value="true">Yes</option>
-          <option value="false">False</option>
-        </select>
+
+      <div fxLayout="column">
+        <mat-form-field appearance="fill">
+          <mat-label>Instock</mat-label>
+          <select formControlName="InStock" matNativeControl>
+            <option value="" selected>Select option</option>
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+          </select>
+        </mat-form-field>
       </div>
-    </div>
-    <div class="row">
-      <div class="input-field col s12">
-        <input id="DateReceived" type="date" class="validate">
-        <label for="DateReceived">Date Received</label>
+
+      <div fxLayout="row" fxLayoutGap="20px">
+        <button
+          [disabled]="!editForm.valid"
+          class="waves-effect waves-light"
+          mat-raised-button
+          color="accent"
+          (click)="openSnackBar()"
+          type="submit"
+        >
+          UPDATE
+        </button>
+        <button
+          [routerLink]="['/list']"
+          class="waves-effect waves-light grey"
+          mat-raised-button
+          type="submit"
+        >
+          BACK
+        </button>
       </div>
-    </div>
-    <div class="row">
-      <div class="col s6">
-        <button class="waves-effect waves-light btn" type="submit">Create</button>
-      </div>
-      <div class="col s6">
-        <a class="waves-effect waves-light grey btn">Back to list</a>
-      </div>
-    </div>
-  </form>
-</div>
+    </form>
+  </div>
+</mat-card>

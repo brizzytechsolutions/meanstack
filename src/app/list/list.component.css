@@ -1,6 +1,15 @@
-/* Structure */
-table {
+
+ mat-card{
+  width: 60%;
+  display: block;
+  margin-left:auto;
+  margin-right:auto;
+  vertical-align:middle;
+ }
+
+ table {
   width: 100%;
+  height: auto;
 }
 
 .mat-form-field {
@@ -8,6 +17,14 @@ table {
   padding-bottom: 2rem;
 }
 
-mat-card {
-  margin-top: 2rem;
+/* .tooltip-red {
+  background: #b71c1c;
+} */
+
+::ng-deep .example-tooltip-red {
+  background: #b71c1c;
+}
+
+::ng-deep .example-tooltip-yellow {
+  background: #cb5b00;
 }

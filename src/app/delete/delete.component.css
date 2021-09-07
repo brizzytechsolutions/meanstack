@@ -1,0 +1,12 @@
+mat-card{
+  width: 55%;
+  display: block;
+  margin-left:auto;
+  margin-right:auto;
+  vertical-align:middle;
+ }
+
+ .mat-form-field {
+   width: 100%;
+   padding-bottom: 2rem;
+ }

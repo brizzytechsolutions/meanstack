@@ -1,8 +1,7 @@
-export interface Inventory {
-    id: number;
-    CategoryName: string;
-    Description: string;
-    Quantity: number;
-    InStock: boolean;
-    DateReceived: Date;
+export class Inventory {
+  CategoryName?: string;
+  Description?: string;
+  Quantity?: number;
+  InStock?: boolean;
+  DateReceived?: Date;
 }
